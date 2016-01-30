@@ -1,0 +1,179 @@
+\documentclass{beamer}
+
+% opacity bugfix: see http://tug.org/pipermail/pdftex/2007-December/007480.html
+\pdfpageattr {/Group << /S /Transparency /I true /CS /DeviceRGB>>}
+
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+
+\usepackage{tikz}
+\usetikzlibrary{%
+   arrows,%
+   calc,%
+   fit,%
+   patterns,%
+   plotmarks,%
+   shapes.geometric,%
+   shapes.misc,%
+   shapes.symbols,%
+   shapes.arrows,%
+   shapes.callouts,%
+   shapes.multipart,%
+   shapes.gates.logic.US,%
+   shapes.gates.logic.IEC,%
+   er,%
+   automata,%
+   backgrounds,%
+   chains,%
+   topaths,%
+   trees,%
+   petri,%
+   mindmap,%
+   matrix,%
+   calendar,%
+   folding,%
+   fadings,%
+   through,%
+   patterns,%
+   positioning,%
+   scopes,%
+   decorations.fractals,%
+   decorations.shapes,%
+   decorations.text,%
+   decorations.pathmorphing,%
+   decorations.pathreplacing,%
+   decorations.footprints,%
+   decorations.markings,%
+   shadows}
+\usepackage{animate}
+\usepackage{amssymb, amsmath, amsfonts, enumerate}
+%\usepackage{bbold}
+\newcommand\hmmax{0}
+\usepackage{bm}
+%\usepackage{dsfont}
+\usepackage{pxfonts}
+\usepackage{xcolor}
+\usepackage{url}
+
+\usepackage[backend=bibtex,style=authoryear,dashed=false]{biblatex}
+\addbibresource{../bib/refs.bib}
+%\renewcommand{\bibfont}{\normalfont\scriptsize}
+\setlength{\bibhang}{3ex}
+
+\usepackage{hyperref}
+
+\usetheme[official=false,department=none]{tue2008}
+%\usefonttheme{default}
+
+
+%\usetheme[secheader]{Boadilla}
+%\setbeamercovered{transparent}
+%\setbeamercovered{invisible}
+%\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{bibliography item}[text] % numbered references
+%\useoutertheme{infolines}
+%\setbeamertemplate{headline}{}
+%\setbeamertemplate{footline}{\hspace*{5mm}\hfill\insertframenumber\hspace*{5mm}\vspace{3mm}}
+%\setbeamercolor{alerted text}{fg=orange!80!black}
+
+% ------------------------------------------------------------------------------
+
+\newcommand{\vcenterbox}[1]{\ensuremath{\vcenter{\hbox{#1}}}}
+%
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\posreals}{\reals_{>0}}
+\newcommand{\posrealszero}{\reals_{\ge 0}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\dd}{\,\mathrm{d}}
+
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\renewcommand{\vec}[1]{{\bm#1}}
+
+\newcommand{\uz}{^{(0)}} % upper zero
+\newcommand{\un}{^{(n)}} % upper n
+\newcommand{\ui}{^{(i)}} % upper i
+\newcommand{\uell}{^{(\ell)}} % upper ell
+
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
+
+\newcommand{\Rsys}{R_\text{sys}}
+\newcommand{\lRsys}{\ul{R}_\text{sys}}
+\newcommand{\uRsys}{\ol{R}_\text{sys}}
+
+\newcommand{\Fsys}{F_\text{sys}}
+\newcommand{\lFsys}{\ul{F}_\text{sys}}
+\newcommand{\uFsys}{\ol{F}_\text{sys}}
+
+\def\Tsys{T_\text{sys}}
+
+\newcommand{\E}{\operatorname{E}}
+\newcommand{\V}{\operatorname{Var}}
+\newcommand{\sd}{\operatorname{sd}}
+
+\newcommand{\wei}{\operatorname{Wei}} % Weibull Distribution
+\newcommand{\ig}{\operatorname{IG}}   % Inverse Gamma Distribution
+\newcommand{\ber}{\operatorname{Bernoulli}} 
+\newcommand{\bin}{\operatorname{Binomial}}
+\newcommand{\be}{\operatorname{Beta}} 
+\newcommand{\bebin}{\operatorname{Beta-binomial}}
+\newcommand{\norm}{\operatorname{N}}
+
+\def\then{{\structure{$\rule[0.35ex]{2ex}{0.5ex}\!\!\!\blacktriangleright$}}}
+\def\play{{\structure{$\blacktriangleright$}}}
+\def\gplus{{\structure{\rule[0.45ex]{1.4ex}{0.4ex}\hspace{-0.9ex}\rule[0.0ex]{0.4ex}{1.3ex}\hspace{0.5ex}}}}
+\def\gminus{{\structure{\rule[0.45ex]{1.4ex}{0.4ex}}}}
+
+\input{nydefs.tex}
+\input{nycoldefs.tex}
+
+%%\def\blau#1{{\color{lmugreen2}#1}}
+%\def\rot#1{{\color{red}#1}}
+%\def\gruen#1{{\color{blue}#1}}
+
+\newcommand{\x}{\vec{x}}
+
+\def\tnow{t_\text{now}}
+\def\tpnow{t^+_\text{now}}
+
+\newcommand{\comp}[1]{\raisebox{-1mm}{\tikz{\node[%type1
+rectangle,rounded corners=0mm,draw,fill=tuepmsgreen!70,thick,inner sep=0pt,minimum size=4mm]{#1};}}}
+
+\newcommand{\cyansec}[1]{\textcolor{tuecyan}{\large\bf #1}}
+\newcommand{\cyanalert}[1]{\textcolor{tuecyan}{#1}}
+\newcommand{\bluesec}[1]{\textcolor{tueblue}{\large\bf #1}}
+\newcommand{\bluealert}[1]{\textcolor{tueblue}{#1}}
+
+\setbeamertemplate{itemize item}{\tiny\raise1.5pt\hbox{\color{tueblue}$\blacktriangleright$}}
+
+% ------------------------------------------------------------------------------
+
+
+\title{Nonparametric System Reliability\\ Combining Expert Knowledge and Data}
+
+\author{\textbf{Gero Walter}\inst{1}, Louis Aslett\inst{2}, Frank Coolen\inst{3}}
+\institute{ \inst{1} Eindhoven University of Technology, Eindhoven, NL\\ 
+            \inst{2} University of Oxford, Oxford, UK\\
+            \inst{3} Durham University, Durham, UK \\[2ex]
+            \url{g.m.walter@tue.nl} \\[2ex]
+            \includegraphics[height=9mm]{logos/tuelogo} \quad 
+            \includegraphics[height=9mm]{logos/university_of_oxford} \quad
+            \includegraphics[height=9mm]{logos/logounidurham-large} \quad
+            \includegraphics[height=9mm]{logos/dinalog-hp} }
+\date{2016-02-04}
+
+\begin{document}
+
+\frame{
+\titlepage
+}
+
+\addtocounter{framenumber}{-1} 
+
+\begin{frame}{System Reliability}
+
+\end{frame}
+
+\end{document}

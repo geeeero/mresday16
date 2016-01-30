@@ -1,0 +1,55 @@
+\def\blau#1{{\color{tuegreen}#1}}
+\def\rot#1{{\color{tuered}#1}}
+\def\gruen#1{{\color{tueblue}#1}}
+
+\def\yzr{\rot{\yz}}
+\def\ynr{\rot{\yn}}
+\def\byzr{\rot{\byz}}
+\def\bynr{\rot{\byn}}
+\def\yzor{\rot{y\uz_1}}
+\def\yzjr{\rot{y\uz_j}}
+\def\yzkr{\rot{y\uz_k}}
+\def\yzlr{\rot{\yzl}}
+\def\yzur{\rot{\yzu}}
+\def\ynjr{\rot{y\un_j}}
+\def\ynlr{\rot{\ynl}}
+\def\ynur{\rot{\ynu}}
+\def\yzjlr#1{\rot{\ul{y}\uz_#1}}
+\def\yzjur#1{\rot{\ol{y}\uz_#1}}
+
+
+\def\nzg{\gruen{\nz}}
+\def\nng{\gruen{\nn}}
+\def\nzlg{\gruen{\nzl}}
+\def\nzug{\gruen{\nzu}}
+\def\nnlg{\gruen{\nnl}}
+\def\nnug{\gruen{\nnu}}
+
+\def\psib{\blau{\psi}}
+\def\bpsib{\blau{{b}(\psi)}}
+
+
+% ------------ shading start
+\newsavebox{\tempbox}
+\newcommand\leftrightshading[3]{%
+  \begin{tikzfadingfrompicture}[name=inputtext]
+    \node [text=white] {#1};
+  \end{tikzfadingfrompicture}
+  \begin{lrbox}{\tempbox}%
+    \begin{tikzpicture}
+      \node [text=white,inner sep=0pt,outer sep=0pt] (textnode) {#1};
+      \shade[path fading=inputtext,fit fading=false,left color=#2,right color=#3]
+      (textnode.south west) rectangle (textnode.north east);
+    \end{tikzpicture}%
+  \end{lrbox}
+  % Now we use the fading in another picture:
+  \usebox\tempbox{}%
+}
+% ------------ shading end
+
+
+%\def\PZc{\mathrm I\!\Pi\uz}
+\def\PZc{\leftrightshading{$\mathrm I\!\Pi\uz$}{blue}{red}}
+%\def\PNc{\PN}
+\def\PNc{\leftrightshading{$\mathrm I\!\Pi\un$}{blue}{red}}
+
