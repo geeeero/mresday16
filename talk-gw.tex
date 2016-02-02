@@ -109,6 +109,12 @@
 
 \def\Tsys{T_\text{sys}}
 
+\def\tmax{t_\text{max}}
+\def\tnow{t_\text{now}}
+\def\tpnow{t^+_\text{now}}
+
+\newcommand{\ptk}{p^k_t}
+
 \newcommand{\E}{\operatorname{E}}
 \newcommand{\V}{\operatorname{Var}}
 \newcommand{\sd}{\operatorname{sd}}
@@ -259,30 +265,68 @@ We want to learn about the system reliability $\Rsys(t) = P(\Tsys > t)$ based on
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{***nonparametric reliability model}
+\begin{frame}{Nonparametric Component Reliability}
 
-nonparametric model for component failure time distribution\\
-example reliability curve on same frame?
+%nonparametric model for component failure time distribution\\
+%example reliability curve on same frame?
+\begin{tikzpicture}
+\node at (1,3.5) %
+{\parbox{\textwidth}{%
+\uncover<1->{%
+Functioning probability $\ptk$ of \comp{k} for each time $t \in {\cal T} = \{\dot{t}_1, \dot{t}_2, \ldots \}$\\
+\quad\play\ discrete component reliability function $R^k(t) = p^k_t, \ t \in {\cal T}$.}}};
+\uncover<2>{\node at (0,0) {\includegraphics[width=0.7\textwidth]{figs/discr-rel-0.pdf}};}
+\uncover<3>{\node at (0,0) {\includegraphics[width=0.7\textwidth]{figs/discr-rel-1.pdf}};}
+\uncover<4>{\node at (0,0) {\includegraphics[width=0.7\textwidth]{figs/discr-rel-3.pdf}};}
+\uncover<5>{\node at (0,0) {\includegraphics[width=0.7\textwidth]{figs/discr-rel-bt1.pdf}};}
+\node at (1,0) %
+{\parbox{\textwidth}{%
+\uncover<6->{%
+Choosing $\ptk$'s directly is hard (also ignores uncertainty in choice)\\}
+\uncover<7->{%
+\then\ use Bayesian inference to estimate $\ptk$'s: %combine information from
+\begin{itemize}
+\item[\play]<8-> failure times $\vec{t}^k = (t^k_1, \ldots, t^k_{n_k})$ from test data
+ \begin{itemize}
+ \item[] number of type $k$ components functioning at $t$:\\
+ $S^k_t \sim \bin(\ptk, n_k)$
+ \end{itemize}
+\item[\play]<9-> expert knowledge
+ \begin{itemize}
+ \item[] Beta parameters for each $k$ and $t$:\\
+ $\ptk \sim \be(\az_{k,t}, \bz_{k,t})$
+ \end{itemize}
+\item[\play]<10-> complete picture
+ \begin{itemize}
+ \item[] updated Beta parameters for each $k$ and $t$:\\
+ $\ptk \sim \be(\an_{k,t}, \bn_{k,t})$
+ \end{itemize}
+\end{itemize}}
+}};
 
-\end{frame}
-
-\begin{frame}{***system reliability: survival signature}
-
-(adapt slide 8 of ESREL talk)\\
-cite risk analysis paper\\
-frame with example graph?
+\end{tikzpicture}
 
 \end{frame}
 
 \begin{frame}{***pdc etc, 6 slides}
 
 (adapt slides 3--6 of ESREL talk)\\
+choosing all these Beta parameters is still hard\ldots\\
 vague, incomplete prior info, pdc\\
 reparametrization\\
 Beta example\\
 imprecision\\
 sets of priors\\
 sets of Betas example?
+
+\end{frame}
+
+
+\begin{frame}{***system reliability: survival signature}
+
+(adapt slide 8 of ESREL talk)\\
+cite risk analysis paper\\
+frame with example graph?
 
 \end{frame}
 
@@ -304,7 +348,8 @@ bridge system or brake system example graph?\\
 
 (adapt slide 11 of ESREL talk)\\
 case study\\
-block policy with minimal repair?
+block policy with minimal repair?\\
+(nonparam hazard rate $h^k(t_j) = (p^k_{t_j} - p^k_{t_{j+1}}) / p^k_{t_j}$)
 
 \end{frame}
 

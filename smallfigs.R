@@ -27,13 +27,13 @@ bdsfpo <- dbetany(sfbetavec, sfpos)
 sfbinomvec <- 0:sfn
 sfbinom <- dbinom(sfbinomvec, size=sfn, prob=0.75)
 
-pdf("smallfig-prior.pdf", width=2, height=2)
+pdf("figs/smallfig-prior.pdf", width=2, height=2)
 qplot(x=sfbetavec, y=bdsfpr, geom="line", ylim=c(0,4.5), xlab="p", ylab="f(p)")
 dev.off()
-pdf("smallfig-posterior.pdf", width=2, height=2)
+pdf("figs/smallfig-posterior.pdf", width=2, height=2)
 qplot(x=sfbetavec, y=bdsfpo, geom="line", ylim=c(0,4.5), xlab="p", ylab="f(p|s)")
 dev.off()
-pdf("smallfig-binom.pdf", width=2, height=2)
+pdf("figs/smallfig-binom.pdf", width=2, height=2)
 qplot(x=sfbinomvec, y=sfbinom, geom="bar", stat="identity", xlab="s", ylab="f(s|p)")
 dev.off()
 
