@@ -317,6 +317,7 @@ Choosing $\ptk$'s directly is hard (also ignores uncertainty in choice)\\}
  type1/.style={rectangle,draw,fill=tuepmsgreen!70,very thick,inner sep=0pt,minimum size=6mm},
  type2/.style={rectangle,draw,fill=tuepmsgreen!70,very thick,inner sep=0pt,minimum size=6mm},
  type3/.style={rectangle,draw,fill=tuepmsgreen!70,very thick,inner sep=0pt,minimum size=6mm},
+ type1a/.style={rectangle,draw,fill=tueyellow!70,very thick,inner sep=0pt,minimum size=6mm},
  hv path/.style={thick, to path={-| (\tikztotarget)}},
  vh path/.style={thick, to path={|- (\tikztotarget)}},
  pfeil/.style={-latex', line width=1mm, color=tuered, shorten <=1mm}]
@@ -351,13 +352,17 @@ Choosing $\ptk$'s directly is hard (also ignores uncertainty in choice)\\}
 %      \vdots & \vdots & \vdots & \vdots
       \end{tabular} } };
 \draw [pfeil] (survsign.north) to [out=50,in=260] (0.3,-0.7);}
-\uncover<3>{%
+\uncover<3-9>{%
 \begin{scope}[xshift=1cm,yshift=-3.5cm]
 \begin{scope}[scale=0.75]
-\node[type1] (T1-2) at ( 1.2, 1.1) {1};
-\node[type1] (T1-3) at ( 1.2,-1.1) {1};
-\node[type1] (T1-5) at ( 2.8, 1.1) {1};
-\node[type1] (T1-6) at ( 2.8,-1.1) {1};
+\uncover<3,5,7,9>{\node[type1 ] (T1-2) at ( 1.2, 1.1) {1};}
+\uncover<4,6,8>  {\node[type1a] (T1-2) at ( 1.2, 1.1) {1};}
+\uncover<3,4,7,8>{\node[type1 ] (T1-3) at ( 1.2,-1.1) {1};}
+\uncover<5,6,9>  {\node[type1a] (T1-3) at ( 1.2,-1.1) {1};}
+\uncover<3,5,6,8>{\node[type1 ] (T1-5) at ( 2.8, 1.1) {1};}
+\uncover<4,7,9>  {\node[type1a] (T1-5) at ( 2.8, 1.1) {1};}
+\uncover<3,4,6,9>{\node[type1 ] (T1-6) at ( 2.8,-1.1) {1};}
+\uncover<5,7,8>  {\node[type1a] (T1-6) at ( 2.8,-1.1) {1};}
 \node[type2] (T2)   at ( 2.0, 0)   {2};
 \node[type3] (T3)   at ( 4.3, 0)   {3};
 \coordinate (start) at (0  ,0);
@@ -377,7 +382,7 @@ Choosing $\ptk$'s directly is hard (also ignores uncertainty in choice)\\}
       (T3.east)   edge[hv path] (end);
 \end{scope}
 \end{scope}}
-\uncover<4>{\node[cyanrand] (postpred) at (3,-3.6)%
+\uncover<10>{\node[cyanrand] (postpred) at (3,-3.6)%
      {\parbox[c]{0.41\textwidth}{Posterior predictive probability that\\ in a new system, $l_k$ of the $m_k$ \comp{k}'s\\
                                 function at time $t$:\\[1ex] \hspace*{1ex}
                                 $\binom{m_k}{l_k} \int [P(T <   t \mid \ptk)]^{l_k}$ \\ \hspace*{5.6ex}
@@ -390,9 +395,9 @@ Choosing $\ptk$'s directly is hard (also ignores uncertainty in choice)\\}
 
 \end{frame}
 
-\begin{frame}{System Reliability Example}
+\begin{frame}{System Reliability: Example}
 
-***bridge system
+\includegraphics[width=\textwidth]{figs/sysrelex}\\
 
 \end{frame}
 
