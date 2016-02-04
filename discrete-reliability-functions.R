@@ -73,5 +73,12 @@ relbt1 <- haz2rel(hazbt1)
 plot(relxvec, relbt1, type="l")
 relplotmaker(relxvec, relbt1, "discr-rel-bt1")
 
+hazbt2 <- c(0.08-0.03*(1:20)/10, rep(0.02,40), 0.02+0.02*(1:40)/10)
+plot(hazxvec, hazbt1, type="l")
+lines(hazxvec, hazbt2)
+relbt2 <- haz2rel(hazbt2)
+plot(relxvec, relbt1, type="l")
+lines(relxvec, relbt2)
+
 
 #

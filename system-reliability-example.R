@@ -79,6 +79,7 @@ b0df$Part <- ordered(b0df$Part, levels=c("T1", "T2", "T3", "System"))
 
 tuered <- rgb(0.839,0.000,0.290)
 tueblue <- rgb(0.000,0.400,0.800)
+tueyellow <- rgb(1.000,0.867,0.000)
 
 sr0 <- ggplot(b0df, aes(x=Time)) + scale_colour_manual(values = c(tuered, tueblue))
 sr0 <- sr0 + geom_line(aes(y=SysRel, group=Item, colour=Item)) + facet_wrap(~Part, nrow=2)
