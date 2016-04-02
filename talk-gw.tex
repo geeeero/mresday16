@@ -157,7 +157,8 @@ rectangle,rounded corners=0mm,draw,fill=tuepmsgreen!70,thick,inner sep=0pt,minim
 % ------------------------------------------------------------------------------
 
 
-\title{Nonparametric System Reliability\\ Combining Expert Knowledge and Data}
+\title{Nonparametric Bayesian %Estimation\\ of 
+       System Reliability\\ {\large with Imprecise Prior Information on Component Lifetimes}}
 
 \author{\ul{Gero Walter}\inst{1}, Louis Aslett\inst{2}, Frank Coolen\inst{3}}
 \institute{ \inst{1} Eindhoven University of Technology, Eindhoven, NL\\ 
@@ -168,7 +169,7 @@ rectangle,rounded corners=0mm,draw,fill=tuepmsgreen!70,thick,inner sep=0pt,minim
             \includegraphics[height=9mm]{logos/university_of_oxford} \quad
             \includegraphics[height=9mm]{logos/logounidurham-large} \quad
             \includegraphics[height=9mm]{logos/dinalog-hp} }
-\date{2016-02-04}
+\date{SIAM-UQ'16, 2016-04-08}
 
 \begin{document}
 
@@ -254,7 +255,7 @@ We want to learn about the system reliability $\Rsys(t) = P(\Tsys > t)$ based on
 \begin{itemize}
 \item conjugate prior makes learning about parameter tractable,\\  %posterior distribution
       just update hyperparameters:\quad $\az \to \an$, $\bz \to \bn$
-\item closed form for some inferences: $\E[p\mid s] = \frac{\an}{\an+\bn}$
+\item closed form for most inferences: $\E[p\mid s] = \frac{\an}{\an+\bn}$
 \end{itemize}}};}
 \uncover<3-5>{%
 \node at (-0.5,0) {\includegraphics[width=0.25\textwidth]{figs/smallfig-binom}};}
@@ -351,17 +352,18 @@ Functioning probability $\ptk$ of \comp{k} for each time $t \in {\cal T} = \{\do
 %      \vdots & \vdots & \vdots & \vdots
       \end{tabular} } };
 \draw [pfeil] (survsign.north) to [out=50,in=260] (0.3,-0.7);}
-\uncover<3-9>{%
+\uncover<2-8>{%
 \begin{scope}[xshift=1cm,yshift=-3.5cm]
+\uncover<3-8>{\node at (0.5,1.7) {Y};}
 \begin{scope}[scale=0.75]
-\uncover<3,5,7,9>{\node[type1 ] (T1-2) at ( 1.2, 1.1) {1};}
-\uncover<4,6,8>  {\node[type1a] (T1-2) at ( 1.2, 1.1) {1};}
-\uncover<3,4,7,8>{\node[type1 ] (T1-3) at ( 1.2,-1.1) {1};}
-\uncover<5,6,9>  {\node[type1a] (T1-3) at ( 1.2,-1.1) {1};}
-\uncover<3,5,6,8>{\node[type1 ] (T1-5) at ( 2.8, 1.1) {1};}
-\uncover<4,7,9>  {\node[type1a] (T1-5) at ( 2.8, 1.1) {1};}
-\uncover<3,4,6,9>{\node[type1 ] (T1-6) at ( 2.8,-1.1) {1};}
-\uncover<5,7,8>  {\node[type1a] (T1-6) at ( 2.8,-1.1) {1};}
+\uncover<2,4,6,8>{\node[type1 ] (T1-2) at ( 1.2, 1.1) {1};}
+\uncover<3,5,7>  {\node[type1a] (T1-2) at ( 1.2, 1.1) {1};}
+\uncover<2,3,6,7>{\node[type1 ] (T1-3) at ( 1.2,-1.1) {1};}
+\uncover<4,5,8>  {\node[type1a] (T1-3) at ( 1.2,-1.1) {1};}
+\uncover<2,4,5,7>{\node[type1 ] (T1-5) at ( 2.8, 1.1) {1};}
+\uncover<3,6,8>  {\node[type1a] (T1-5) at ( 2.8, 1.1) {1};}
+\uncover<2,3,5,8>{\node[type1 ] (T1-6) at ( 2.8,-1.1) {1};}
+\uncover<4,6,7>  {\node[type1a] (T1-6) at ( 2.8,-1.1) {1};}
 \node[type2] (T2)   at ( 2.0, 0)   {2};
 \node[type3] (T3)   at ( 4.3, 0)   {3};
 \coordinate (start) at (0  ,0);
@@ -381,7 +383,7 @@ Functioning probability $\ptk$ of \comp{k} for each time $t \in {\cal T} = \{\do
       (T3.east)   edge[hv path] (end);
 \end{scope}
 \end{scope}}
-\uncover<10>{\node[cyanrand] (postpred) at (3,-3.6)%
+\uncover<9>{\node[cyanrand] (postpred) at (3,-3.6)%
      {\parbox[c]{0.41\textwidth}{Posterior predictive probability that\\ in a new system, $l_k$ of the $m_k$ \comp{k}'s\\
                                 function at time $t$:\\[1ex] \hspace*{1ex}
                                 $\binom{m_k}{l_k} \int [P(T <   t \mid \ptk)]^{l_k}$ \\ \hspace*{5.6ex}
