@@ -47,6 +47,7 @@
    shadows}
 \usepackage{animate}
 \usepackage{amssymb, amsmath, amsfonts, enumerate}
+\usepackage{pifont}
 %\usepackage{bbold}
 \newcommand\hmmax{0}
 \usepackage{bm}
@@ -143,6 +144,9 @@
 
 \def\tnow{t_\text{now}}
 \def\tpnow{t^+_\text{now}}
+
+\newcommand{\cmark}{{\color{tuegreen}\ding{51}}}
+\newcommand{\xmark}{{\color{tuered}\ding{55}}}
 
 \newcommand{\comp}[1]{\raisebox{-1mm}{\tikz{\node[%type1
 rectangle,rounded corners=0mm,draw,fill=tuepmsgreen!70,thick,inner sep=0pt,minimum size=4mm]{#1};}}}
@@ -354,7 +358,12 @@ Functioning probability $\ptk$ of \comp{k} for each time $t \in {\cal T} = \{\do
 \draw [pfeil] (survsign.north) to [out=50,in=260] (0.3,-0.7);}
 \uncover<2-8>{%
 \begin{scope}[xshift=1cm,yshift=-3.5cm]
-\uncover<3-8>{\node at (0.5,1.7) {Y};}
+\uncover<3-8>{\node at (0.5,1.7) {\cmark};}
+\uncover<4-8>{\node at (1.0,1.7) {\cmark};}
+\uncover<5-8>{\node at (1.5,1.7) {\xmark};}
+\uncover<6-8>{\node at (2.0,1.7) {\xmark};}
+\uncover<7-8>{\node at (2.5,1.7) {\xmark};}
+\uncover<8-8>{\node at (3.0,1.7) {\xmark};}
 \begin{scope}[scale=0.75]
 \uncover<2,4,6,8>{\node[type1 ] (T1-2) at ( 1.2, 1.1) {1};}
 \uncover<3,5,7>  {\node[type1a] (T1-2) at ( 1.2, 1.1) {1};}
